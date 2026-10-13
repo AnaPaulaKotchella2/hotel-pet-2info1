@@ -2,10 +2,12 @@
 import { onMounted, ref } from 'vue';
 import {RouterLink, useRouter} from 'vue';
 
+const pet = ref({});
+const tutor = ref([]);
+
 const route = useRouter();
 const API_URL = "https://localhost:3000"
 
-const pet = ref({});
 
 async function carregarPet() {
     const idPet = route.params.id;
@@ -19,20 +21,21 @@ async function carregarPet() {
     tutor.value = await respostaTutor.jason();
 }
 
-onMounted();
+onMounted(carregarPet);
 
 </script>
 
 <template>
 
-<h1> Nome do pet: {{ PetsView.nome }}</h1>
+<h1> Nome do pet: {{ pet.nome }}</h1>
 
-<p> Espécie: {{ Pet.especie }}</p>
+<p> Espécie: {{ pet.especie }}</p>
 
-<button class="btn btn-default">
+<p> Tutor: {{ tutores.find(tutor => tutor.id === pet.tutorId)?.nome }}</p>
 
-    <RouterLink :to="{name: 'pets'}">Voltar</RouterLink>
+<button class="btn btn-primary">
 
+    
 </button>
 
 </template>
