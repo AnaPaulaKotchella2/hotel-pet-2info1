@@ -21,13 +21,19 @@
       "id": "2",
       "nome": "Melado",
       "especie": "Cachorro",
-      "tutorId": "2"
+      "tutorId": "1"
     },
     {
       "id": "3",
       "nome": "Pandora",
       "especie": "Gato",
-      "tutorId": "3"
+      "tutorId": "2"
+    },
+    {
+      "nome": "Amora",
+      "especie": "Cachorro",
+      "tutorId": "3",
+      "id": "VZUys7MgJ1E"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

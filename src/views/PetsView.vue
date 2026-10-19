@@ -22,34 +22,31 @@ async function carregarDados() {
   loading.value = false;
 }
 
-function nomeDoTutor(tutorId) {
+function nomeDoTutor(tutorid) {
   for (const tutor of tutores.value) {
-    console.log('tutor', tutorId);
+    console.log('tutor', tutorid);
     // tutor.id == tutorId
-    if (tutor.id === tutorId) {
+    if (tutor.id === tutorid) {
       return tutor.nome;
     }
   }
   return 'Tutor Não Encontrado!';
-}
+};
 
 async function excluirPet(id) {
-  const confirmarExclusão = window.confirm("Deseja realmente excluir o pet?")
+  const confirmarExclusao = window.confirm('Deseja realmente excluir o pet?');
 
-  if (confirmarExclusão) {
-    //logica para exluir o Pet
+  if (confirmarExclusao) {
+    // Lógica para excluir o pet
     await fetch(`${API_URL}/pets/${id}`, {
       method: 'DELETE',
     });
-    //carregar dados apos a exclusao
-
+    // Recarrega os dados após a exclusão
     await carregarDados();
-
   }
 }
 
 // Recebe o tutorId do pet e procura o tutor correspondente.
-
 onMounted(carregarDados);
 </script>
 
@@ -62,7 +59,10 @@ onMounted(carregarDados);
       </p>
     </header>
 
-    <RouterLink class="btn btn-primary" :to="{ name: 'addPet' }">
+    <RouterLink
+      class="btn btn-primary"
+      :to="{ name: 'addPet' }"
+    >
       Adicionar Pet
     </RouterLink>
 
@@ -78,18 +78,23 @@ onMounted(carregarDados);
       </thead>
 
       <tbody>
-        <tr v-for="pet in pets" :key="pet.id">
+        <tr
+          v-for="pet in pets"
+          :key="pet.id"
+        >
           <td>{{ pet.id }}</td>
           <td>{{ pet.nome }}</td>
           <td>{{ pet.especie }}</td>
           <td>{{ nomeDoTutor(pet.tutorId) }}</td>
           <td>
             <RouterLink :to="`/pets/${pet.id}`"> Visualizar </RouterLink>
-            <button class="btn btn-danger mr-5" @click="excluirPet(pet.id)">
+            <button
+              class="btn btn-danger mr-5"
+              @click="excluirPet(pet.id)"
+            >
               Excluir
             </button>
           </td>
-
         </tr>
       </tbody>
     </table>

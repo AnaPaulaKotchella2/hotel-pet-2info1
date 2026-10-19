@@ -134,8 +134,7 @@ onMounted(carregarTutores);
           </option>
         </select>
       </div>
-
-       <button
+      <button
         type="submit"
         class="btn btn-success mt-2"
       >
