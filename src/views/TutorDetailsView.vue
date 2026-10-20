@@ -24,7 +24,11 @@ onMounted(carregarTutor);
 <template>
   <h1>Nome do Tutor: {{ tutor.nome }}</h1>
   <p>Telefone tutor: {{ tutor.telefone }}</p>
+  <p>Cpf Tutor:  {{ tutor.cpf }}</p>
+  <p>Email Tutor: {{ tutor.email }}</p>
+  <p>DataNascimento Tutor: {{ tutor.nascimento }}</p>
   <p>Nome do Pet: {{ pet?.nome }}</p>
+  
 
   <button class="btn btn-default">
     <RouterLink :to="{ name: 'tutores' }"> Voltar </RouterLink>

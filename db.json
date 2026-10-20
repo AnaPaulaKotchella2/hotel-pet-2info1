@@ -3,17 +3,26 @@
     {
       "id": "1",
       "nome": "João",
-      "telefone": "479999100100"
+      "telefone": "479999100100",
+      "cpf": "***.***.***-**",
+      "email": "tutorfulano035@gmail.com",
+      "nascimento": "DD/MM/AA"
     },
     {
       "id": "2",
       "nome": "Maria",
-      "telefone": "479999100100"
+      "telefone": "479999100100",
+      "cpf": "***.***.***-**",
+      "email": "tutorciclana035@gmail.com",
+      "nascimento": "DD/MM/AA"
     },
     {
       "id": "3",
       "nome": "Ana",
-      "telefone": "479999100100"
+      "telefone": "479999100100",
+      "cpf": "***.***.***-**",
+      "email": "tutorliçana035@gmail.com",
+      "nascimento": "DD/MM/AA"
     }
   ],
   "pets": [

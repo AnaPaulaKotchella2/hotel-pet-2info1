@@ -9,28 +9,28 @@ const tutores = ref([]);
 const loading = ref(true);
 
 async function carregarDados() {
-  const respostaPets = await fetch(`${API_URL}/tutores`);
-  pets.value = await respostaPets.json();
+  const respostaTutores = await fetch(`${API_URL}/tutores`);
+  pets.value = await respostaTutores.json();
 
   console.log('Pets:', pets.value);
 
-  const respostaTutores = await fetch(`${API_URL}/tutores`);
-  tutores.value = await respostaTutores.json();
+  const respostaPets = await fetch(`${API_URL}/tutores`);
+  tutores.value = await respostaPets.json();
 
   console.log('Tutores:', tutores.value);
 
   loading.value = false;
 }
 
-function nomeDoTutor(tutorid) {
+function nomeDoPet(petsid) {
   for (const tutor of tutores.value) {
-    console.log('tutor', tutorid);
+    console.log('tutor', petsid);
     // tutor.id == tutorId
-    if (tutor.id === tutorid) {
-      return tutor.nome;
+    if (tutor.id === petsid) {
+      return pets.nome;
     }
   }
-  return 'Tutor Não Encontrado!';
+  return 'Pet Não Encontrado!';
 };
 
 async function excluirTutor(id) {
@@ -38,7 +38,7 @@ async function excluirTutor(id) {
 
   if (confirmarExclusao) {
     // Lógica para excluir o pet
-    await fetch(`${API_URL}/Tutor/${id}`, {
+    await fetch(`${API_URL}/tutor/${id}`, {
       method: 'DELETE',
     });
     // Recarrega os dados após a exclusão
@@ -71,9 +71,12 @@ onMounted(carregarDados);
         <tr>
           <th>ID</th>
           <th>Nome</th>
-          <th>Especie</th>
-          <th>Tutor</th>
-          <th>Ações</th>
+          <th>Telefone</th>
+          <th>CPF</th>
+          <th>Email</th>
+          <th>Data de Nascimento</th>
+          <th>Pet</th>
+          
         </tr>
       </thead>
 
@@ -85,7 +88,11 @@ onMounted(carregarDados);
           <td>{{ tutor.id }}</td>
           <td>{{ tutor.nome }}</td>
           <td>{{ tutor.telefone }}</td>
-          <td>{{ nomeDoTutor(tutor.tutoresId) }}</td>
+          <td>{{ tutor.cpf }}</td>
+          <td>{{ tutor.email }}</td>
+          <td>{{tutor.nascimento}}</td>
+          <td>{{ nomeDoPet(pets.petsId) }}</td>
+          
           <td>
             <RouterLink :to="`/tutores/${tutores.id}`"> Visualizar </RouterLink>
             <button
