@@ -10,11 +10,11 @@ const tutor = ref({});
 
 async function carregarTutor() {
   // exibindo os dados do Id do Pet
-  const idTutor = route.params.id;
-  console.log('ID do Tutor:', idTutor);
+  const idTutores = route.params.id;
+  console.log('ID do Tutor:', idTutores);
 
-  const respostaTutor = await fetch(`${API_URL}/tutores/${idTutor}`);
-  tutor.value = await respostaTutor.json();
+  const respostaPet = await fetch(`${API_URL}/tutores/${idTutor}`);
+  tutor.value = await respostaPet.json();
 
 }
 

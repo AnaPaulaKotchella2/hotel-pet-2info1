@@ -17,7 +17,7 @@ async function carregarDados() {
   const respostaPets = await fetch(`${API_URL}/tutores`);
   tutores.value = await respostaPets.json();
 
-  console.log('Tutores:', tutores.value);
+  console.log('Tutores Callback:', tutores.value);
 
   loading.value = false;
 }
@@ -94,7 +94,7 @@ onMounted(carregarDados);
           <td>{{ nomeDoPet(pets.petsId) }}</td>
           
           <td>
-            <RouterLink :to="`/tutores/${tutores.id}`"> Visualizar </RouterLink>
+            <RouterLink :to="`/tutor/${tutores.id}`"> Visualizar </RouterLink>
             <button
               class="btn btn-danger mr-5"
               @click="excluirTutor(tutores.id)"

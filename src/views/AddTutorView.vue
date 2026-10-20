@@ -16,7 +16,7 @@ const router = useRouter();
 
 const API_URL = 'http://localhost:3000';
 
-const tutores = ref({});
+const tutor = ref({});
 const pets = ref({})
 
 async function carregarPets() {
@@ -53,7 +53,7 @@ onMounted(carregarPets);
       Adicionar Tutor
     </RouterLink>
 
-    <p v-if="carregandoPets">Carregando Pets ...</p>
+    <p v-if="carregandoPets">Carregando Tutores ...</p>
     <div v-else>
       <p
         v-if="erro"
@@ -83,89 +83,83 @@ onMounted(carregarPets);
       </div>
 
       <div class="col-md-6">
-        <label
+      <label
           for="cpf"
           class="form-label"
         >
           CPF:
         </label>
 
-        <select
-          id="email"
-          v-model="novoPet.especie"
-          class="form-select"
-          required
-        >
           <input
-          type="number"
-          id="nome"
+          type="text"
+          id="cpf"
           maxlength="11"
-          v-model="novoTutor.nome"
+          v-model="novoTutor.cpf"
           class="form-control"
           required
           @input="cpf = cpf.replace(/\D/g, '').slice(0, 11)"
         />
-        </select>
+        
       </div>
+
+
+      
 
       <div class="col-md-6">
         <label
-          for="nome"
+          for="email"
           class="form-label"
         >
           Email
         </label>
 
-        <select
-          id="email"
-          v-model="novoPet.especie"
-          class="form-select"
-          required
-        >
-          <input
+        <input
           type="email"
-          id="nome"
-          v-model="novoTutor.nome"
+          id="email"
+          v-model="novoTutor.email"
           class="form-control"
           required
         />
-        </select>
       </div>
 
       <div class="col-md-6">
         <label
-          for="pet"
+          for="telefone"
           class="form-label"
         >
-          Pet
+          Telefone
         </label>
 
-        <select
-          id="tutor"
-          v-model="novoTutor.tutorId"
-          class="form-select"
+        <input
+          type="tel"
+          id="email"
+          v-model="novoTutor.telefone"
+          class="form-control"
           required
-        >
-          <option
-            value=""
-            disabled
-          >
-            Selecione um Tutor
-          </option>
-          <option
-            v-for="tutor in tutores"
-            :key="tutor.id"
-            :value="tutor.id"
-          >
-            {{ tutor.nome }}
-          </option>
-        </select>
+        />
       </div>
+      <div class="col-md-6">
+        <label
+          for="nascimento"
+          class="form-label"
+        >
+          Data de nascimento
+        </label>
+
+        <input
+          type="date"
+          id="nascimento"
+          v-model="novoTutor.nascimento"
+          class="form-control"
+          required
+        />
+      </div>
+     
       <button
         type="submit"
         class="btn btn-success mt-2"
       >
-        Salvar Pet
+        Salvar Tutor
       </button>
     </form>
   </div>
